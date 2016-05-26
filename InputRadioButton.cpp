@@ -3,6 +3,7 @@
 struct UndavInputRadio::RadioButton
 {
     UndavInput::Input *input;
+    bool valor;
 };
 
 UndavInputRadio::RadioButton* UndavInputRadio::CreateRadioButton(){
@@ -31,4 +32,25 @@ UndavInputRadio::RadioButton* UndavInputRadio::CreateRadioButton(string name,str
 
 UndavInput::Input* UndavInputRadio::GetInputElement(RadioButton* radioButton){
     return radioButton->input;
+}
+
+void UndavInputRadio::Check(RadioButton* radioButton){
+    radioButton->valor = true;
+}
+
+void UndavInputRadio::Uncheck(RadioButton* radioButton){
+    radioButton->valor = false;
+}
+
+bool UndavInputRadio::IsChecked(RadioButton* radioButton){
+    if (radioButton->valor){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+void UndavInputRadio::DestroyRadioButton(RadioButton* radioButton){
+    delete radioButton;
 }

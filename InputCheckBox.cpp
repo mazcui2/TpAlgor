@@ -3,6 +3,7 @@
 struct UndavInputCheckBox::CheckBox
 {
     UndavInput::Input *input;
+    bool valor;
 };
 
 UndavInputCheckBox::CheckBox* UndavInputCheckBox::CreateCheckBox(){
@@ -31,4 +32,25 @@ UndavInputCheckBox::CheckBox* UndavInputCheckBox::CreateCheckBox(string name,str
 
 UndavInput::Input* UndavInputCheckBox::GetInputElement(CheckBox* checkBox){
     return checkBox->input;
+};
+
+void UndavInputCheckBox::Check(CheckBox* checkBox){
+    checkBox->valor = true;
+}
+
+void UndavInputCheckBox::Uncheck(CheckBox* checkBox){
+    checkBox->valor = false;
+}
+
+bool UndavInputCheckBox::IsChecked(CheckBox* checkBox){
+    if (checkBox->valor){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+void UndavInputCheckBox::DestroyCheckBox(CheckBox* checkBox){
+    delete checkBox;
 }

@@ -38,24 +38,28 @@ string UndavInput::GetHtmlText(Input* input){
 
 string mostrarMensaje;
 
-    if (input->tipo == TextBox && input->nombre == " " && input->valor == " "){
+    if (input->tipo == TextBox && input->nombre == "" && input->valor == ""){
         mostrarMensaje = "<input type='text'>";
     }
 
-    if (input->tipo == TextBox && input->nombre != " " && input->valor != " "){
+    if (input->tipo == TextBox && input->nombre != "" && input->valor != ""){
         mostrarMensaje = "<type='text' name='" + input->nombre + "' value='" + input->valor + "'>";
     }
 
-    if (input->tipo == SubmitButton && input->valor == "Suscribirme!"){
+    if (input->tipo == TextBox && input->nombre != ""){
+        mostrarMensaje = "<type='text' name='" + input->nombre+"'>";
+    }
+
+    if (input->tipo == SubmitButton){
         mostrarMensaje = "<type='submit' value='Suscribirme!'>";
     }
 
     if (input->tipo == CheckBox){
-        mostrarMensaje = "<input type='checkbox'>";
+        mostrarMensaje = "<type='checkbox' name='" + input->nombre + "' value='" + input->valor + "'>";
     }
 
     if (input->tipo == RadioButton){
-        mostrarMensaje = "<input type='radio'>";
+        mostrarMensaje = "<type='radio' name='" + input->nombre + "' value='" + input->valor + "'>";
     }
 
     return mostrarMensaje;
