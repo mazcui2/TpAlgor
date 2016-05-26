@@ -1,0 +1,139 @@
+# depslib dependency file v1.0
+1462426306 source:c:\users\tz\desktop\tp\tp\inputbutton.cpp
+	"InputButton.h"
+
+1462424442 c:\users\tz\desktop\tp\tp\inputbutton.h
+	"Input.h"
+	<string>
+
+1462426284 c:\users\tz\desktop\tp\tp\input.h
+	<string>
+
+1462930389 source:c:\users\tz\desktop\tp\tp\inputcheckbox.cpp
+	"InputCheckBox.h"
+
+1462417806 c:\users\tz\desktop\tp\tp\inputcheckbox.h
+	"Input.h"
+	<string>
+
+1462930136 source:c:\users\tz\desktop\tp\tp\inputradiobutton.cpp
+	"InputRadioButton.h"
+
+1462417748 c:\users\tz\desktop\tp\tp\inputradiobutton.h
+	"Input.h"
+	<string>
+
+1462928658 source:c:\users\tz\desktop\tp\tp\inputtext.cpp
+	"InputText.h"
+
+1462423978 c:\users\tz\desktop\tp\tp\inputtext.h
+	"Input.h"
+	<string>
+
+1462918494 source:c:\users\tz\desktop\tp\tp\main.cpp
+	<iostream>
+	"Input.h"
+	"InputText.h"
+	"InputCheckBox.h"
+	"InputRadioButton.h"
+	"InputButton.h"
+	<string>
+
+1462425964 source:c:\users\tz\desktop\tp\tp\mainentrega1.cpp
+	<iostream>
+	"Input.h"
+	"InputText.h"
+	"InputCheckBox.h"
+	"InputRadioButton.h"
+	"InputButton.h"
+	<string>
+
+1462923674 source:c:\users\tz\desktop\tp\tp\input.cpp
+	"Input.h"
+
+1462941009 source:c:\users\tz\desktop\tp\inputbutton.cpp
+	"InputButton.h"
+
+1462424442 c:\users\tz\desktop\tp\inputbutton.h
+	"Input.h"
+	<string>
+
+1462426284 c:\users\tz\desktop\tp\input.h
+	<string>
+
+1462930389 source:c:\users\tz\desktop\tp\inputcheckbox.cpp
+	"InputCheckBox.h"
+
+1462417806 c:\users\tz\desktop\tp\inputcheckbox.h
+	"Input.h"
+	<string>
+
+1462930136 source:c:\users\tz\desktop\tp\inputradiobutton.cpp
+	"InputRadioButton.h"
+
+1462417748 c:\users\tz\desktop\tp\inputradiobutton.h
+	"Input.h"
+	<string>
+
+1462935524 source:c:\users\tz\desktop\tp\inputtext.cpp
+	"InputText.h"
+
+1462423978 c:\users\tz\desktop\tp\inputtext.h
+	"Input.h"
+	<string>
+
+1462940529 source:c:\users\tz\desktop\tp\input.cpp
+	"Input.h"
+
+1462937328 source:c:\users\tz\desktop\tp\main.cpp
+	<iostream>
+	"Input.h"
+	"InputText.h"
+	"InputCheckBox.h"
+	"InputRadioButton.h"
+	"InputButton.h"
+	<string>
+
+1462941010 source:c:\git\tpalgor\inputbutton.cpp
+	"InputButton.h"
+
+1462424442 c:\git\tpalgor\inputbutton.h
+	"Input.h"
+	<string>
+
+1462426284 c:\git\tpalgor\input.h
+	<string>
+
+1462935526 source:c:\git\tpalgor\inputtext.cpp
+	"InputText.h"
+
+1462423978 c:\git\tpalgor\inputtext.h
+	"Input.h"
+	<string>
+
+1462937330 source:c:\git\tpalgor\main.cpp
+	<iostream>
+	"Input.h"
+	"InputText.h"
+	"InputCheckBox.h"
+	"InputRadioButton.h"
+	"InputButton.h"
+	<string>
+
+1462417806 c:\git\tpalgor\inputcheckbox.h
+	"Input.h"
+	<string>
+
+1462417748 c:\git\tpalgor\inputradiobutton.h
+	"Input.h"
+	<string>
+
+1463787112 source:c:\git\tpalgor\input.cpp
+	"Input.h"
+
+1463758296 source:c:\git\tpalgor\inputcheckbox.cpp
+	"InputCheckBox.h"
+
+1463758648 source:c:\git\tpalgor\inputradiobutton.cpp
+	"InputRadioButton.h"
+
