@@ -94,3 +94,46 @@
 	"InputButton.h"
 	<string>
 
+1462941010 source:c:\git\tpalgor\inputbutton.cpp
+	"InputButton.h"
+
+1462424442 c:\git\tpalgor\inputbutton.h
+	"Input.h"
+	<string>
+
+1462426284 c:\git\tpalgor\input.h
+	<string>
+
+1462935526 source:c:\git\tpalgor\inputtext.cpp
+	"InputText.h"
+
+1462423978 c:\git\tpalgor\inputtext.h
+	"Input.h"
+	<string>
+
+1462937330 source:c:\git\tpalgor\main.cpp
+	<iostream>
+	"Input.h"
+	"InputText.h"
+	"InputCheckBox.h"
+	"InputRadioButton.h"
+	"InputButton.h"
+	<string>
+
+1462417806 c:\git\tpalgor\inputcheckbox.h
+	"Input.h"
+	<string>
+
+1462417748 c:\git\tpalgor\inputradiobutton.h
+	"Input.h"
+	<string>
+
+1463787112 source:c:\git\tpalgor\input.cpp
+	"Input.h"
+
+1463758296 source:c:\git\tpalgor\inputcheckbox.cpp
+	"InputCheckBox.h"
+
+1463758648 source:c:\git\tpalgor\inputradiobutton.cpp
+	"InputRadioButton.h"
+

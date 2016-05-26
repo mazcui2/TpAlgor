@@ -1,0 +1,25 @@
+Requerimientos no cumplidos
+
+Postcondicion de la prmitiva UndavInput::GetHtmlText
+
+No cumple la postcondicion para el caso en el que Input es del tipo SubmitButton dado que el valor del
+
+atributo Value ('Suscribirme!') esta “cableado” en la implementación y no utiliza el valor de la
+
+variable correspondiente.
+
+Implementación de las primitivas Destroy
+
+Las primitivas destroy de todos los TDA, excepto UndavInput, no cumplen con la post condición de
+
+liberar todos los recursos. Antes de realizar el delete de la variable deben destruir la instancia del tipo
+
+UndavInput::Input, puesto que el delete no realiza esto.
+
+Primitivas sin implementar
+
+Veo que por ejemplo no implementaron la primitiva UndavInputButton::DestroyButton. Tienen que
+
+estar todas las primtivas implementadas, de lo contrario no van a aprobar las entregas. Revisen que no
+
+les quede ninguna sin implementar.
