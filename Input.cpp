@@ -51,7 +51,7 @@ string mostrarMensaje;
     }
 
     if (input->tipo == SubmitButton){
-        mostrarMensaje = "<type='submit' value='" + input->nombre + "'>";
+        mostrarMensaje = "<type='submit' value='Suscribirme!'>";
     }
 
     if (input->tipo == CheckBox){

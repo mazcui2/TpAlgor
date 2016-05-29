@@ -42,6 +42,12 @@
 		<Unit filename="InputRadioButton.h" />
 		<Unit filename="InputText.cpp" />
 		<Unit filename="InputText.h" />
+		<Unit filename="OptionItem.cpp" />
+		<Unit filename="OptionItem.h" />
+		<Unit filename="RadioButtonList.cpp" />
+		<Unit filename="RadioButtonList.h" />
+		<Unit filename="Select.cpp" />
+		<Unit filename="Select.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

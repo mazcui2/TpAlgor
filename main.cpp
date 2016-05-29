@@ -1,81 +1,77 @@
 #include <iostream>
-#include "Input.h"
-#include "InputText.h"
-#include "InputCheckBox.h"
-#include "InputRadioButton.h"
-#include "InputButton.h"
 #include <string>
+#include "Input.h"
+#include "Select.h"
+#include "OptionItem.h"
+#include "RadioButtonList.h"
+#include "InputRadioButton.h"
 
-using std::string;
 using std::cout;
 using std::endl;
-using namespace UndavInput;
-using namespace UndavInputTextBox;
-using namespace UndavInputRadio;
-using namespace UndavInputCheckBox;
-using namespace UndavInputButton;
+using std::string;
+using UndavSelect::Select;
+using UndavRadioButtonList::RadioButtonList;
 
-void PruebaFormularioSubscripcion();
-void MostrarCampoInput(string nombreCampo, Input* input);
-void MostrarCampoCheckeable(string texto, Input* input, bool agregarNuevaLinea);
-void MostrarComienzoFormulario();
-void MostrarFinFormulario(Button* submit);
+void PruebaSelect();
+Select* CrearPeliculas();
+
+void PruebaRadioButtonList();
+RadioButtonList* CrearEstadosCiviles();
 
 int main() {
-	PruebaFormularioSubscripcion();
-	return 0;
+	PruebaSelect();
+	PruebaRadioButtonList();
 }
 
-void PruebaFormularioSubscripcion()
+void PruebaSelect()
 {
-	UndavInputTextBox::TextBox* inputNombre = CreateTextBox("nombre");
-	UndavInputTextBox::TextBox* inputEmail = CreateTextBox("email");
-	UndavInputRadio::RadioButton* inputResumenDiario = CreateRadioButton("resumen", "diario");
-	UndavInputRadio::RadioButton* inputResumenSemanal = CreateRadioButton("resumen", "semanal");
-	UndavInputRadio::RadioButton* inputResumenQuincenal = CreateRadioButton("resumen", "quincenal");
-	UndavInputCheckBox::CheckBox* inputAceptaTerminos = CreateCheckBox("confirmacion", "true");
-	UndavInputButton::Button* submit = UndavInputButton::CreateButton("Suscribirme!");
+	Select* peliculas = CrearPeliculas();
+	UndavSelect::RemoveOption(peliculas, 2);
+	UndavSelect::RemoveOption(peliculas, 200000);
+	UndavSelect::RemoveOption(peliculas, UndavSelect::GetSelectedItem(peliculas));
+	UndavSelect::SelectItem(peliculas, 1);
+	UndavSelect::RemoveOption(peliculas, UndavSelect::GetSelectedItem(peliculas));
+	UndavSelect::AddOption(peliculas, UndavOptionItem::CreateOptionItem("Ultima pelicula", "last"));
 
-	MostrarComienzoFormulario();
-	MostrarCampoInput("Nombre", UndavInputTextBox::GetInputElement(inputNombre));
-	MostrarCampoInput("Email", UndavInputTextBox::GetInputElement(inputEmail));
-	MostrarCampoCheckeable("Quiero un resumen diario", UndavInputRadio::GetInputElement(inputResumenDiario), false);
-	MostrarCampoCheckeable("Quiero un resumen semanal", UndavInputRadio::GetInputElement(inputResumenSemanal), false);
-	MostrarCampoCheckeable("Quiero un resumen quincenal", UndavInputRadio::GetInputElement(inputResumenQuincenal), true);
-	MostrarCampoCheckeable("Acepto los terminos y condiciones", UndavInputCheckBox::GetInputElement(inputAceptaTerminos), true);
-	MostrarFinFormulario(submit);
-
+	cout<<UndavSelect::GetHtmlText(peliculas)<<endl;
+	UndavSelect::DestroySelect(peliculas);
 }
 
-void MostrarCampoInput(string nombreCampo, Input* input)
+void PruebaRadioButtonList()
 {
-	cout<<nombreCampo<<":"<<"<br>"<<endl;
-	cout<<UndavInput::GetHtmlText(input)<<endl;
-	cout<<"<br>"<<endl;
+	RadioButtonList* estadosCiviles = CrearEstadosCiviles();
+	cout<<"Cantidad de estados civiles: "<<UndavRadioButtonList::Count(estadosCiviles)<<endl;
+	UndavInputRadio::Check(UndavRadioButtonList::GetRadioButton(estadosCiviles, 1));
+	UndavInputRadio::RadioButton* estadoCivilSeleccionado = UndavRadioButtonList::GetSelectedRadioButton(estadosCiviles);
+	cout<<"Estado civil seleccionado: "<<UndavInput::GetHtmlText(UndavInputRadio::GetInputElement(estadoCivilSeleccionado))<<endl;
+	UndavRadioButtonList::DestroyRadioButtonList(estadosCiviles);
 }
 
-void MostrarCampoCheckeable(string texto, Input* input, bool agregarNuevaLinea)
+
+Select* CrearPeliculas()
 {
-	cout<<UndavInput::GetHtmlText(input)<<" "<<texto;
-	if(agregarNuevaLinea)
+	char **movies = new char* [5];
+	for(int i =0; i <5 ;++i)
 	{
-		cout<<"<br>"<<endl;
+		movies[i] = new char[2];
+		for(int j = 0; j <2;++j)
+		{
+			movies[i][j] = '\0';
+		}
+		movies[i][0]=i;
 	}
+
+	return UndavSelect::CreateSelectFor("movie", movies, 5);
 }
 
-void MostrarComienzoFormulario()
+RadioButtonList* CrearEstadosCiviles()
 {
-	cout<<"<!DOCTYPE html>"<<endl;
-	cout<<"<html>"<<endl;
-	cout<<"<body>"<<endl;
-	cout<<"<form>"<<endl;
-}
-
-void MostrarFinFormulario(Button* submit)
-{
-	cout<<"<br><br>"<<endl;
-	cout<<UndavInput::GetHtmlText(UndavInputButton::GetInputElement(submit))<<endl;
-	cout<<"</form>"<<endl;
-	cout<<"</body>"<<endl;
-	cout<<"</html>"<<endl;
+	char **estadosCiviles = new char* [3];
+	estadosCiviles[0] = new char[8];
+	estadosCiviles[1] = new char[7];
+	estadosCiviles[2] = new char[5];
+	estadosCiviles[0][0]='s';estadosCiviles[0][1]='o';estadosCiviles[0][2]='l';estadosCiviles[0][3]='t';estadosCiviles[0][4]='e';estadosCiviles[0][5]='r';estadosCiviles[0][6]='o';estadosCiviles[0][6]='\0';
+	estadosCiviles[1][0]='c';estadosCiviles[1][1]='a';estadosCiviles[1][2]='s';estadosCiviles[1][3]='a';estadosCiviles[1][4]='d';estadosCiviles[1][5]='o';estadosCiviles[1][6]='\0';
+	estadosCiviles[2][0]='o';estadosCiviles[2][1]='t';estadosCiviles[2][2]='r';estadosCiviles[2][3]='o';estadosCiviles[2][4]='\0';
+	return UndavRadioButtonList::CreateRadioButtonListFor("estadoCivil", estadosCiviles, 3);
 }
