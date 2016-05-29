@@ -156,3 +156,65 @@
 1464478154 source:c:\users\tz\desktop\enregas tp\tp 2\select.cpp
 	"Select.h"
 
+1464541619 source:c:\git\tpalgor\input.cpp
+	"Input.h"
+
+1462426284 c:\git\tpalgor\input.h
+	<string>
+
+1464542197 source:c:\git\tpalgor\inputcheckbox.cpp
+	"InputCheckBox.h"
+
+1462417806 c:\git\tpalgor\inputcheckbox.h
+	"Input.h"
+	<string>
+
+1464542288 source:c:\git\tpalgor\inputradiobutton.cpp
+	"InputRadioButton.h"
+
+1462417748 c:\git\tpalgor\inputradiobutton.h
+	"Input.h"
+	<string>
+
+1462935526 source:c:\git\tpalgor\inputtext.cpp
+	"InputText.h"
+
+1462423978 c:\git\tpalgor\inputtext.h
+	"Input.h"
+	<string>
+
+1464547228 source:c:\git\tpalgor\main.cpp
+	<iostream>
+	<string>
+	"Input.h"
+	"Select.h"
+	"OptionItem.h"
+	"RadioButtonList.h"
+	"InputRadioButton.h"
+
+1464541619 c:\git\tpalgor\select.h
+	<string>
+	"OptionItem.h"
+
+1464541619 c:\git\tpalgor\optionitem.h
+	<string>
+
+1464541619 c:\git\tpalgor\radiobuttonlist.h
+	<string>
+	"InputRadioButton.h"
+
+1464541619 source:c:\git\tpalgor\optionitem.cpp
+	"OptionItem.h"
+
+1464547091 source:c:\git\tpalgor\radiobuttonlist.cpp
+	"RadioButtonList.h"
+
+1464542096 source:c:\git\tpalgor\inputbutton.cpp
+	"InputButton.h"
+
+1462424442 c:\git\tpalgor\inputbutton.h
+	"Input.h"
+	<string>
+
+1464547139 source:c:\git\tpalgor\select.cpp
+

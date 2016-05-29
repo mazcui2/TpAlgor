@@ -1,7 +1,6 @@
-#include "Select.h"
+/*#include "Select.h"
 
-struct UndavSelect::Select
-{
+struct UndavSelect::Select{
     string name;
     UndavOptionItem::OptionItem *option;
 };
@@ -24,71 +23,60 @@ UndavSelect::Select* UndavSelect::CreateSelect(string name){
 	 * 		@options: Opciones que se desea agregar al Select
 	 * 		@optionsCount: Cantidad de opciones que se desea agregar al Select
 	 * 		@return: Instancia valida de Select con las opciones cargadas
-	 */
+	 *
 UndavSelect::Select* UndavSelect::CreateSelectFor(string name, char *options[], int optionsCount){
 
+    int counterOptionChar = 0;
+
     Select* nuevoSelect = new Select;
+    nuevoSelect->name = name;
 
-    int iterationOption = 0;
-    int iterationCharacter = 0;
-    char coma = ',';
-    bool firstField = false;
-    bool secondField = false;
-    OptionItem* auxOption;
-
-    while (iterationOption<=optionsCount){
-
-        iterationCharacter=0;
-        bool firstField = true;
-        bool secondField = false;
-        string value = "";
-        string text = "";
-
-        while (options[iterationOption][iterationCharacter] != '\0'){
-
-            if (firstField){
-                if (options[iterationOption][iterationCharacter] == coma){
-                    firstField = false;
-                    secondField = true;
-                }
-                else{
-                    value =  value + options[iterationOption][iterationCharacter];
-                }
-            }
-
-            if (secondField){
-                if (options[iterationOption][iterationCharacter] == '\0'){
-                    secondField = false;
-                }
-                else{
-                    text = text + options[iterationOption][iterationCharacter];
-                }
-            }
-        }
-
-        //VER MATI 1
-        //EN LA ESTRUCTURA SELECT TENGO UN PUNTERO DE OPCIONES. LA IDEA ES IR ENCOLANDO TODAS LAS OPCIONES
-        //CREADAS UNA DE TRAS DE LA OTRA A PARTIR DE ESTE PUNTERO PARA GENERAR LA ESTRUCTURA SELECT.
-//        nuevoSelect->option = UndavOptionItem::addOptionToListOption(UndavOptionItem::CreateOptionItem(text,value),nuevoSelect->option);
+    //Ahora vamos a crearle los options
+    while(counterOptionChar < options.length) {
+        UndavOptionItem::OptionItem option = ParseOptionItem(options, counterOptionChar);
 
         if (nuevoSelect->option == NULL)
         {
-            nuevoSelect->option = UndavOptionItem::CreateOptionItem(text,value);
+            nuevoSelect->option = option;
         }
         else
         {
             auxOption = nuevoSelect->option;
-            while (auxOption -> next != NULL)
+            while (auxOption ->next != NULL)
             {
                 auxOption = auxOption -> next;
             }
-            auxOption -> next = UndavOptionItem::CreateOptionItem(text,value);
+            auxOption -> next = option;
         }
 
-        iterationOption++;
     }
-    nuevoSelect->name = name;
+
     return nuevoSelect;
+}
+
+UndavOptionItem::OptionItem ParseOptionItem(char *options[], int &counterOptionChar){
+    bool loadedValue;
+    string value, text;
+    char coma = ',';
+
+    //no tiene que ser fin de cadena ni tiene que ser la segunda coma (se da cuenta que es la segunda coma por que ya cargo el value que es el primer parámetro del csv)
+    while((options[counterOptionChar] != '\0') && (!loadedValue || options[counterOptionChar] != coma))
+    {
+        if(options[counterOptionChar] != coma){
+            loadedValue = true;
+        }
+        else{
+            if(!loadedValue){
+                value = value + options[counterOptionChar];
+            }
+            else{
+                text = text + options[counterOptionChar];
+            }
+        }
+        counterOptionChar++;
+    }
+
+    return UndavOptionItem::CreateOptionItem(text,value);
 }
 
 
@@ -100,7 +88,7 @@ UndavSelect::Select* UndavSelect::CreateSelectFor(string name, char *options[], 
 	 * Parametros:
 	 * 		@select: Instancia de Select a la cual se desea modificar la opcion seleccionada
 	 * 		@optionIndex: Indice que indica el número de opcion (comienza en cero) a seleccionar
-	 */
+	 *
 void UndavSelect::SelectItem(Select* select, int optionIndex){
     //VER MATI 2
     //LA IDEA ES RECORRER TODA LA LISTA DE OPCIONES PRIMERO. SI EL optionIndex ES MAYOR A LA CANTIDAD DE
@@ -131,3 +119,4 @@ void UndavSelect::SelectItem(Select* select, int optionIndex){
         }
     }
 }
+*/

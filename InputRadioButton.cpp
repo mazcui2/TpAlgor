@@ -43,12 +43,7 @@ void UndavInputRadio::Uncheck(RadioButton* radioButton){
 }
 
 bool UndavInputRadio::IsChecked(RadioButton* radioButton){
-    if (radioButton->valor){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return(radioButton->valor);
 }
 
 void UndavInputRadio::DestroyRadioButton(RadioButton* radioButton){
