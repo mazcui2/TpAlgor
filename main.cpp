@@ -26,7 +26,7 @@ int main() {
 void PruebaSelect()
 {
 	Select* peliculas = CrearPeliculas();
-	UndavSelect::RemoveOption(peliculas, 2);
+    UndavSelect::RemoveOption(peliculas, 2);
 	UndavSelect::RemoveOption(peliculas, 200000);
 	UndavSelect::RemoveOption(peliculas, UndavSelect::GetSelectedItem(peliculas));
 	UndavSelect::SelectItem(peliculas, 1);
@@ -60,7 +60,6 @@ Select* CrearPeliculas()
 		}
 		movies[i][0]=i;
 	}
-
 	return UndavSelect::CreateSelectFor("movie", movies, 5);
 }
 

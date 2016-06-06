@@ -20,3 +20,9 @@ UndavInputButton::Button* UndavInputButton::CreateButton(string name){
 UndavInput::Input* UndavInputButton::GetInputElement(Button* button){
     return button->input;
 }
+
+void UndavInputButton::DestroyButton(Button* button){
+    delete button;
+}
+
+

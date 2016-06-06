@@ -43,12 +43,7 @@ void UndavInputCheckBox::Uncheck(CheckBox* checkBox){
 }
 
 bool UndavInputCheckBox::IsChecked(CheckBox* checkBox){
-    if (checkBox->valor){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return(checkBox->valor);
 }
 
 void UndavInputCheckBox::DestroyCheckBox(CheckBox* checkBox){
