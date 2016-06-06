@@ -5,7 +5,6 @@ struct UndavOptionItem::OptionItem
     string text;
     string value;
     bool isSelected;
-    OptionItem* next;
 };
 
 //UndavOptionItem::OptionItem* addOptionToListOption(OptionItem* Newoption, OptionItem* option){
@@ -18,7 +17,6 @@ UndavOptionItem::OptionItem* UndavOptionItem::CreateOptionItem(string text, stri
     nuevoOptionItem->text = text;
     nuevoOptionItem->value = value;
     nuevoOptionItem->isSelected = false;
-    nuevoOptionItem->next = NULL;
 
     return nuevoOptionItem;
 

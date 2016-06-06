@@ -19,14 +19,14 @@ void PruebaRadioButtonList();
 RadioButtonList* CrearEstadosCiviles();
 
 int main() {
-	/*PruebaSelect();
+	PruebaSelect();
 	PruebaRadioButtonList();
 }
 
 void PruebaSelect()
 {
 	Select* peliculas = CrearPeliculas();
-	UndavSelect::RemoveOption(peliculas, 2);
+    UndavSelect::RemoveOption(peliculas, 2);
 	UndavSelect::RemoveOption(peliculas, 200000);
 	UndavSelect::RemoveOption(peliculas, UndavSelect::GetSelectedItem(peliculas));
 	UndavSelect::SelectItem(peliculas, 1);
@@ -60,7 +60,6 @@ Select* CrearPeliculas()
 		}
 		movies[i][0]=i;
 	}
-
 	return UndavSelect::CreateSelectFor("movie", movies, 5);
 }
 
@@ -74,5 +73,4 @@ RadioButtonList* CrearEstadosCiviles()
 	estadosCiviles[1][0]='c';estadosCiviles[1][1]='a';estadosCiviles[1][2]='s';estadosCiviles[1][3]='a';estadosCiviles[1][4]='d';estadosCiviles[1][5]='o';estadosCiviles[1][6]='\0';
 	estadosCiviles[2][0]='o';estadosCiviles[2][1]='t';estadosCiviles[2][2]='r';estadosCiviles[2][3]='o';estadosCiviles[2][4]='\0';
 	return UndavRadioButtonList::CreateRadioButtonListFor("estadoCivil", estadosCiviles, 3);
-	*/
 }
