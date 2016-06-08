@@ -1,5 +1,7 @@
 #include "OptionItem.h"
+#include<iostream>
 
+using namespace std;
 struct UndavOptionItem::OptionItem
 {
     string text;
@@ -17,9 +19,7 @@ UndavOptionItem::OptionItem* UndavOptionItem::CreateOptionItem(string text, stri
     nuevoOptionItem->text = text;
     nuevoOptionItem->value = value;
     nuevoOptionItem->isSelected = false;
-
     return nuevoOptionItem;
-
 }
 
 
@@ -60,6 +60,7 @@ string UndavOptionItem::GetHtmlText(OptionItem* option){
     else{
         showHtmlText = "<option value="+option->value+">"+option->text+"</option>";
     }
+    return showHtmlText;
 }
 
 void UndavOptionItem::DestroyOptionItem(OptionItem* item){

@@ -1,4 +1,5 @@
 #include <string>
+#include<iostream>
 #include "Select.h"
 #include "OptionItem.h"
 
@@ -53,20 +54,32 @@ Options* ParsearCadenaOptions(char options[]) {
 }
 
 UndavSelect::Select* UndavSelect::CreateSelectFor(string name, char *options[], int optionsCount) {
+
     Select* nuevoSelect = CreateSelect(name);
-    cout<<1<<endl;
-    if (optionsCount > 0) {
-        Options* nuevoOptions = ParsearCadenaOptions(options[0]);
-        nuevoSelect->cantidadOptions = optionsCount;
-        nuevoSelect->name = name;
-        nuevoSelect->options = nuevoOptions;
-        if (optionsCount > 1) {
-            for (int i = 1; i < optionsCount; i++) {
-                nuevoOptions = ParsearCadenaOptions(options[i]);
-                nuevoOptions->siguiente = nuevoSelect->options;
-                nuevoSelect->options = nuevoOptions;
+
+    try
+    {
+        if (optionsCount > 0) {
+
+            Options* nuevoOptions = ParsearCadenaOptions(options[0]);
+            nuevoSelect->cantidadOptions = optionsCount;
+            nuevoSelect->name = name;
+            nuevoSelect->options = nuevoOptions;
+            cout<<111<<endl;
+            if (optionsCount > 1) {
+                for (int i = 1; i < optionsCount; i++) {
+                     cout<<321<<endl;
+                    nuevoOptions = ParsearCadenaOptions(options[i]);
+                    cout<<1233<<endl;
+                    nuevoOptions->siguiente = nuevoSelect->options;
+                    cout<<3333<<endl;
+                    nuevoSelect->options = nuevoOptions;
+                }
             }
         }
+    }
+    catch(string e){
+        cout<<e<<endl;
     }
     return nuevoSelect;
 }
@@ -102,12 +115,11 @@ UndavOptionItem::OptionItem* UndavSelect::GetSelectedItem(Select* select) {
 
 void UndavSelect::AddOption(Select* select, UndavOptionItem::OptionItem* newOption) {
     Options* auxiliarOptions = select->options;
-    while (UndavOptionItem::GetText(auxiliarOptions->optionItem) != UndavOptionItem::GetText(newOption) &&
-            UndavOptionItem::GetValue(auxiliarOptions->optionItem) != UndavOptionItem::GetValue(newOption) &&
+    while (
             auxiliarOptions->siguiente != NULL ) {
-
         auxiliarOptions = auxiliarOptions->siguiente;
     }
+
     if (auxiliarOptions->siguiente == NULL) {
         Options* nuevoOptions = CreateOptions();
         nuevoOptions->optionItem = newOption;
