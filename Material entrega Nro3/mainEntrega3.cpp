@@ -74,7 +74,7 @@ void MostrarFormulario(Form* form)
 
 void MostrarHttpPost(Form* form)
 {
-//	cout<<"http://www.undav.edu.ar/subscripcion?"<<UndavForm::Serialize(form)<<endl;
+	cout<<"http://www.undav.edu.ar/subscripcion?"<<UndavForm::Serialize(form)<<endl;
 }
 
 Form* CrearFormulario(OnFormSubmitted accion)
