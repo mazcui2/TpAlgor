@@ -8,6 +8,7 @@
 using namespace UndavRadioButtonList;
 using namespace UndavInputRadio;
 using namespace UndavInput;
+using namespace std;
 using UndavOptionItem::OptionItem;
 
 struct RadioButtons {
@@ -103,21 +104,21 @@ UndavInputRadio::RadioButton* UndavRadioButtonList::GetSelectedRadioButton(Radio
 
 void UndavRadioButtonList::AddRadioButton(RadioButtonList* radioButtons, UndavInputRadio::RadioButton* newRadioButton) {
     RadioButtons* auxRadioButtons = radioButtons->radioButtons;
-    Input* dataInputRadioButtons = UndavInputRadio::GetInputElement(radioButtons->radioButtons->radioButton);
-    Input* dataInputNewRadioButton = UndavInputRadio::GetInputElement(newRadioButton);
+    if (auxRadioButtons != NULL && auxRadioButtons != 0){
+        Input* dataInputRadioButtons = UndavInputRadio::GetInputElement(auxRadioButtons->radioButton);
+        Input* dataInputNewRadioButton = UndavInputRadio::GetInputElement(newRadioButton);
 
-    while (UndavInput::GetValue(dataInputRadioButtons) != UndavInput::GetValue(dataInputNewRadioButton) && auxRadioButtons->next != NULL) {
-        auxRadioButtons = auxRadioButtons->next;
-        dataInputRadioButtons = UndavInputRadio::GetInputElement(auxRadioButtons->radioButton);
+        while (UndavInput::GetValue(dataInputRadioButtons) != UndavInput::GetValue(dataInputNewRadioButton) && auxRadioButtons->next != NULL) {
+            auxRadioButtons = auxRadioButtons->next;
+            dataInputRadioButtons = UndavInputRadio::GetInputElement(auxRadioButtons->radioButton);
+        }
     }
-    if (auxRadioButtons->next == NULL) {
-        auxRadioButtons->next = CreateRadioButtons();
-        auxRadioButtons->next->radioButton = newRadioButton;
-        auxRadioButtons->index=radioButtons->radioButtonsCountIndex;
+     else {
+        radioButtons->radioButtons = CreateRadioButtons();
         radioButtons->radioButtonsCountIndex++;
-    } else {
-        UndavInputRadio::DestroyRadioButton(auxRadioButtons->radioButton);
-        auxRadioButtons->radioButton = newRadioButton;
+        radioButtons->radioButtons->index = radioButtons->radioButtonsCountIndex;
+        radioButtons->radioButtons->radioButton = newRadioButton;
+        radioButtons->radioButtons->next = NULL;
     }
 }
 

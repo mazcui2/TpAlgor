@@ -1,4 +1,7 @@
 #include "InputRadioButton.h"
+#include <iostream>
+
+using namespace std;
 
 struct UndavInputRadio::RadioButton
 {
@@ -31,6 +34,7 @@ UndavInputRadio::RadioButton* UndavInputRadio::CreateRadioButton(string name,str
 }
 
 UndavInput::Input* UndavInputRadio::GetInputElement(RadioButton* radioButton){
+    cout<<123<<endl;
     return radioButton->input;
 }
 

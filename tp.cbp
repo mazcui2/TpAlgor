@@ -53,7 +53,9 @@
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
-			<debugger />
+			<debugger>
+				<search_path add="..\MINGW" />
+			</debugger>
 			<envvars />
 		</Extensions>
 	</Project>

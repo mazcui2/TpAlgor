@@ -57,7 +57,8 @@ int main(int argc, char* argv[]) {
 void ConfirmarFormualario(void* formulario)
 {
 	UndavForm::Submit((Form*) formulario);
-	UndavForm::DestroyForm((Form*) formulario);
+	//NO ANDA PIBE
+	//UndavForm::DestroyForm((Form*) formulario);
 }
 
 void MostrarFormulario(Form* form)
@@ -74,13 +75,12 @@ void MostrarFormulario(Form* form)
 
 void MostrarHttpPost(Form* form)
 {
-//	cout<<"http://www.undav.edu.ar/subscripcion?"<<UndavForm::Serialize(form)<<endl;
+	cout<<"http://www.undav.edu.ar/subscripcion?"<<UndavForm::Serialize(form)<<endl;
 }
 
 Form* CrearFormulario(OnFormSubmitted accion)
 {
 	Form* formulario = CreateForm(accion);
-
 	UndavInputTextBox::TextBox* nombre = CreateTextBox("nombre");
 	UndavInputTextBox::TextBox* apellido = CreateTextBox("apellido");
 	UndavInputTextBox::TextBox* mail = CreateTextBox("mail");
@@ -99,13 +99,15 @@ Form* CrearFormulario(OnFormSubmitted accion)
 	UndavRadioButtonList::AddRadioButton(subscripcion, CreateRadioButton("subscripcion", "semanal"));
 	UndavRadioButtonList::AddRadioButton(subscripcion, CreateRadioButton("subscripcion", "quincenal"));
 	UndavRadioButtonList::AddRadioButton(subscripcion, CreateRadioButton("subscripcion", "mensual"));
-
+    cout<<"paso add radio"<<endl;
 	UndavForm::AddField(formulario, "Nombre", GetInputElement(nombre));
 	UndavForm::AddField(formulario, "Apellido", GetInputElement(apellido));
 	UndavForm::AddField(formulario, "Correo electronico", GetInputElement(mail));
 	UndavForm::AddField(formulario, "Carrera que cursa", carrera);
 	UndavForm::AddField(formulario, "¿Que tipo de subscripcion quiere?", subscripcion);
+	cout<<"paso add field"<<endl;
 	UndavForm::SetSubmitButton(formulario, boton);
+	cout<<"paso submit"<<endl;
 
 	return formulario;
 }
@@ -152,6 +154,7 @@ Form* CrearFormularioPreCargado(OnFormSubmitted accion)
 Comando* CrearComando(int argc, char* argv[])
 {
 	TipoComando tipoComando = ObtenerTipoComando(argc, argv);
+	tipoComando = MostrarFormularioSubscripcion;
 	Comando* comando = NULL;
 	switch (tipoComando) {
 		case Ayuda:
@@ -162,6 +165,7 @@ Comando* CrearComando(int argc, char* argv[])
 		case MostrarFormularioSubscripcion:
 			comando = new Comando;
 			comando->parametro = CrearFormulario(MostrarFormulario);
+			cout<<"creo el form"<<endl;
 			comando->ejecutar = ConfirmarFormualario;
 			break;
 		case RealizarPost:
@@ -184,7 +188,6 @@ TipoComando ObtenerTipoComando(int argc, char* argv[])
 		string comando = argv[1];
 		tipoComando = (comando == ComandoMostrar) ? MostrarFormularioSubscripcion : RealizarPost;
 	}
-
 	return tipoComando;
 };
 

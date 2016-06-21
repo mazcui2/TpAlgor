@@ -4,7 +4,10 @@
 #include "Select.h"
 #include "RadioButtonList.h"
 #include "InputButton.h"
+#include<iostream>
+
 #include "Form.h"
+using namespace std;
 
 using std::string;
 using UndavInputTextBox::TextBox;
@@ -74,16 +77,17 @@ using UndavInputButton::Button;
 	void UndavForm::AddField(Form* form, string fieldName, UndavInput::Input* input){
         if (!form->hasSubmitButton){
             Elements* auxElement = form->elements;
+            auxElement = CreateElement(fieldName, Input, input);
 
             //Ojo con esto!
             if  (form->elements != NULL){
-                while(auxElement->next != NULL){
+                while(auxElement->next != NULL ){
                     auxElement = auxElement->next;
+                    cout<<1<<endl;
                 }
             }
             //Ojo con esto!
 
-            auxElement = CreateElement(fieldName, Input, input);
         }
 	}
 
@@ -99,6 +103,7 @@ using UndavInputButton::Button;
 	void UndavForm::AddField(Form* form, string fieldName, UndavSelect::Select* select){
         if (!form->hasSubmitButton){
             Elements* auxElement = form->elements;
+            auxElement = CreateElement(fieldName, Select, select);
 
             //Ojo con esto!
             if  (form->elements != NULL){
@@ -107,8 +112,6 @@ using UndavInputButton::Button;
                 }
             }
             //Ojo con esto!
-
-            auxElement = CreateElement(fieldName, Select, select);
         }
 	}
 
@@ -124,6 +127,7 @@ using UndavInputButton::Button;
 	void UndavForm::AddField(UndavForm::Form* form, string fieldName, UndavRadioButtonList::RadioButtonList* radioButtons){
          if (!form->hasSubmitButton){
             Elements* auxElement = form->elements;
+            auxElement = CreateElement(fieldName, RadioButtonList, radioButtons);
 
             //Ojo con esto!
             if  (form->elements != NULL){
@@ -132,8 +136,6 @@ using UndavInputButton::Button;
                 }
             }
             //Ojo con esto!
-
-            auxElement = CreateElement(fieldName, RadioButtonList, radioButtons);
         }
 	}
 
@@ -259,7 +261,47 @@ using UndavInputButton::Button;
 	 * 	(6) Si el formulario tiene  los elementos del ejemplo 1, 4 y 5 se obtiene el siguiente string: email=ejemplo@gmail&mascota=canario&subscripcion=semanal
 	 *
 	 */
-	string UndavForm::Serialize(UndavForm::Form* form);
+	string UndavForm::Serialize(UndavForm::Form* form){
+	string serialize = "";
+    UndavInputRadio::RadioButton* radioButtonToCheck;
+    UndavOptionItem::OptionItem* optionItemToCheck;
+    Elements* auxElement = form->elements;
+    while (auxElement != NULL) {
+        switch (auxElement->Type) {
+            case Input:
+                if (UndavInput::GetName((UndavInput::Input*)auxElement->elements) != "") {
+                    serialize = serialize + UndavInput::GetName((UndavInput::Input*)auxElement->elements) + "=" + UndavInput::GetValue((UndavInput::Input*)auxElement->elements);
+                    if (auxElement->next != NULL) {
+                        serialize = serialize + "&";
+                    }
+                }
+                break;
+
+            case RadioButtonList:
+                radioButtonToCheck = UndavRadioButtonList::GetSelectedRadioButton((UndavRadioButtonList::RadioButtonList*)auxElement->elements);
+                if (radioButtonToCheck != NULL) {
+                    serialize = serialize + UndavInput::GetName(UndavInputRadio::GetInputElement(radioButtonToCheck)) + "=" + UndavInput::GetValue(UndavInputRadio::GetInputElement(radioButtonToCheck));
+                    if (auxElement->next != NULL) {
+                        serialize = serialize + "&";
+                    }
+                }
+                break;
+
+            case Select:
+                optionItemToCheck = UndavSelect::GetSelectedItem((UndavSelect::Select*)auxElement->elements);
+                if (optionItemToCheck != NULL) {
+                    serialize = serialize + UndavOptionItem::GetText(optionItemToCheck) + "=" + UndavOptionItem::GetValue(optionItemToCheck);
+                    if (auxElement->next != NULL) {
+                        serialize = serialize + "&";
+                    }
+                }
+                break;
+
+        }
+        auxElement = auxElement->next;
+    }
+    return serialize;
+	}
 
 	/*
 	 * Precondicion: @form fue construido con la primitiva CreateForm
